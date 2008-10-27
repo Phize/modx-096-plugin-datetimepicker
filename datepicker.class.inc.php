@@ -90,7 +90,7 @@ EOD;
     modxPluginDatepicker.jQuery = jQuery.noConflict(true);
 
     modxPluginDatepicker.jQuery(document).ready(function() {
-        // Show date picker
+        // Show datepicker
         function showDatePicker(event) {
             modxPluginDatepicker.jQuery(this).datepicker('dialog', modxPluginDatepicker.jQuery(event.data.field).val(), function(date) { modxPluginDatepicker.jQuery(event.data.field).val(date); }, {
                 duration: 'fast',
@@ -100,11 +100,11 @@ EOD;
             return false; 
         }
 
-        // The array of the elements to replace the function
+        // The array of the selectors to replace datepicker
         var dates = [ { field: 'input[@name="pub_date"]', icon: 'input[@name="pub_date"] ~ a[@onclick]:has(img[src*="cal.gif"])' },
                      { field: 'input[@name="unpub_date"]', icon: 'input[@name="unpub_date"] ~ a[@onclick]:has(img[src*="cal.gif"])' } ];
 
-        // Replace date pickers
+        // Replace datepickers
         for (var i = 0; i < dates.length; i ++) {
             modxPluginDatepicker.jQuery(dates[i].icon).bind('click', { field: dates[i].field }, showDatePicker);
             modxPluginDatepicker.jQuery(dates[i].icon).removeAttr('onclick');
