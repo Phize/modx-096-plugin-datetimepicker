@@ -20,7 +20,6 @@ switch ($e->name) {
         $params = array();
         $params['base_path'] = $base_path;
         $params['lang'] = $language;
-        $params['defaultTime'] = $defaultTime;
 
         $dp = new datetimepicker($params);
         break;

@@ -12,7 +12,6 @@ class datetimepicker {
     var $base_path = '';
     var $base_uri = '';
     var $language = 'en';
-    var $defaultTime = '00:00:00';
 
 
 
@@ -24,8 +23,6 @@ class datetimepicker {
         $this->base_uri = $modx->config['base_url'] . $params['base_path'];
         $lang = isset($params['lang']) ? $params['lang'] : 'auto';
         $this->setLanguage($lang);
-        $time = isset($params['defaultTime']) ? $params['defaultTime'] : '00:00:00';
-        $this->setDefaultTime($time);
 
         $this->output();
     }
