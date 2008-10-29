@@ -1,4 +1,4 @@
-/* InicialitzaciÛ en catal‡ per a l'extenciÛ 'calendar' per jQuery. */
+/* Inicialitzaci√≥ en catal√† per a l'extenci√≥ 'calendar' per jQuery. */
 /* Writers: (joan.leon@gmail.com). */
 jQuery(function($){
 	$.datepicker.regional['ca'] = {clearText: 'Netejar', clearStatus: '',

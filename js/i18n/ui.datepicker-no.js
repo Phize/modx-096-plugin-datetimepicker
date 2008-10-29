@@ -2,7 +2,7 @@
 /* Written by Naimdjon Takhirov (naimdjon@gmail.com). */
 
 $(document).ready(function(){
-    $.datepicker.regional['no'] = {clearText: 'Tøm', clearStatus: '',
+    $.datetimepicker.regional['no'] = {clearText: 'Tøm', clearStatus: '',
 		closeText: 'Lukk', closeStatus: '',
         prevText: '&laquo;Forrige',  prevStatus: '',
 		nextText: 'Neste&raquo;', nextStatus: '',
@@ -19,5 +19,5 @@ $(document).ready(function(){
 		dayStatus: 'DD', dateStatus: 'D, M d',
         dateFormat: 'yy-mm-dd', firstDay: 0, 
 		initStatus: '', isRTL: false};
-    $.datepicker.setDefaults($.datepicker.regional['no']); 
+    $.datetimepicker.setDefaults($.datetimepicker.regional['no']); 
 });

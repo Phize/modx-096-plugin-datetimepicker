@@ -1,5 +1,5 @@
 /* Finnish initialisation for the jQuery UI date picker plugin. */
-/* Written by Harri Kilpiö (harrikilpio@gmail.com). */
+/* Written by Harri KilpiÃ¶ (harrikilpio@gmail.com). */
 
 $(document).ready(function(){
     $.datepicker.regional['fi'] = {
