@@ -27,10 +27,12 @@ Datepicker プラグインはデフォルトのデートピッカーを置き換
 
 2.「Datepicker」という名前のプラグインを新規作成。
 
-3.次のコードを「プラグイン設定」にコピー&ペースト。
+3.datepicker.plugin.tpl.phpの内容を「プラグインコード」にコピー&ペースト。
+
+4.次のコードを「プラグイン設定」にコピー&ペースト。
    &language=Language;string;auto &defaultTime=Default Time(hh:mm:ss);string;00:00:00
 
-4.「OnDocFormPrerender」イベントにチェックを入れて、プラグインを保存。
+5.「OnDocFormPrerender」イベントにチェックを入れて、プラグインを保存。
 
 
 

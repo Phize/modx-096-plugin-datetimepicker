@@ -27,10 +27,12 @@ Install
 
 2.Create new plugin named 'Datepicker'.
 
-3.Copy&Paste the following code to 'Plugin configuration'.
+3.Copy&Paste the content of datepicker.plugin.tpl.php into 'Plugin code'.
+
+4.Copy&Paste the following code into 'Plugin configuration'.
    &language=Language;string;auto &defaultTime=Default Time(hh:mm:ss);string;00:00:00
 
-4.Check 'OnDocFormPrerender' event, and save the plugin.
+5.Check 'OnDocFormPrerender' event, and save the plugin.
 
 
 
