@@ -56,13 +56,6 @@ class datetimepicker {
 
 
 
-    // Set default time
-    function setDefaultTime($time = '00:00:00') {
-        $this->defaultTime = preg_match('/^\d{1,2}:\d{1,2}:\d{1,2}$/', $time) ? $time : '00:00:00';
-    }
-
-
-
     // Output the codes for replacing datetimepicker
     function output() {
         global $modx;
