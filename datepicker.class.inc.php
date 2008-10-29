@@ -83,6 +83,7 @@ EOD;
         $html = <<<EOD
 <!-- Datepicker plugin: BEGIN -->
 <script src="{$this->base_uri}js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="{$this->base_uri}js/jquery.dimensions.js" type="text/javascript" charset="utf-8"></script>
 <script src="{$this->base_uri}js/jquery.datepicker.js" type="text/javascript" charset="utf-8"></script>
 {$js_i18n}
 <script type="text/javascript"  charset="utf-8">
@@ -96,7 +97,8 @@ EOD;
                 duration: 'fast',
                 showAnim: 'fadeIn',
                 dateFormat: 'dd-mm-yy {$this->defaultTime}'
-            });
+            },
+            [ event.pageX + 32, event.pageY - 128 ]);
             return false; 
         }
 
