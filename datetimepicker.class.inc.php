@@ -93,7 +93,7 @@ EOD;
         // Show datetimepicker
         function showDateTimePicker(event) {
             modxPluginDateTimepicker.jQuery(this).datetimepicker('dialog', modxPluginDateTimepicker.jQuery(event.data.field).val(), function(date) { modxPluginDateTimepicker.jQuery(event.data.field).val(date); }, {
-                duration: 'fast',
+                speed: 'fast',
                 showAnim: 'fadeIn',
                 dateFormat: 'dd-mm-yy',
                 timeFormat: 'hh:ii:00'
