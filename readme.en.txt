@@ -1,4 +1,4 @@
-Title      : Datepicker plugin
+Title      : DateTimepicker plugin
 Category   : Plugin
 Author     : Phize
 Author URI : http://phize.net
@@ -11,10 +11,10 @@ Last Update: 2008-10-27
 Introduction
 ------------
 
-Datepicker plugin is the plugin replaces default datepicker.
+DateTimepicker plugin is the plugin replaces default datetimepicker.
 
 In 'Edit document' page,
-when you click calendar icon as usual, new datepicker is shown.
+when you click calendar icon as usual, new datetimepicker is shown.
 
 Now, you can pick up a date without opening new window/tab.
 
@@ -23,11 +23,11 @@ Now, you can pick up a date without opening new window/tab.
 Install
 -------
 
-1.Copy datepicker/ folder to /assets/plugins/
+1.Copy datetimepicker/ folder to /assets/plugins/
 
-2.Create new plugin named 'Datepicker'.
+2.Create new plugin named 'DateTimepicker'.
 
-3.Copy&Paste the content of datepicker.plugin.tpl.php into 'Plugin code'.
+3.Copy&Paste the content of datetimepicker.plugin.tpl.php into 'Plugin code'.
 
 4.Copy&Paste the following code into 'Plugin configuration'.
    &language=Language;string;auto &defaultTime=Default Time(hh:mm:ss);string;00:00:00
@@ -39,9 +39,9 @@ Install
 Parameters
 ----------
 
-language   : The language of datepicker.
-             You can check language code in /assets/plugins/datepicker/js/i18n/ folder.
-             ('**' in 'ui.datepicker-**.js' is the language code.)
+language   : The language of datetimepicker.
+             You can check language code in /assets/plugins/datetimepicker/js/i18n/ folder.
+             ('**' in 'ui.datetimepicker-**.js' is the language code.)
 
              When 'auto' is set,
                the language code will be the same as 'Manager HTML and XML Language Attribute'

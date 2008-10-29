@@ -1,4 +1,4 @@
-Title      : Datepicker plugin
+Title      : DateTimepicker plugin
 Category   : Plugin
 Author     : Phize
 Author URI : http://phize.net
@@ -11,7 +11,7 @@ Last Update: 2008-10-27
 概要
 ----
 
-Datepicker プラグインはデフォルトのデートピッカーを置き換えるプラグインです。
+DateTimepicker プラグインはデフォルトのデートピッカーを置き換えるプラグインです。
 
 ドキュメントの編集画面で、
 いつものようにカレンダーアイコンをクリックすると、新しいデートピッカーが表示されます。
@@ -23,11 +23,11 @@ Datepicker プラグインはデフォルトのデートピッカーを置き換
 インストール
 ------------
 
-1.datepicker/フォルダを /assets/plugins/ にコピー。
+1.datetimepicker/フォルダを /assets/plugins/ にコピー。
 
-2.「Datepicker」という名前のプラグインを新規作成。
+2.「DateTimepicker」という名前のプラグインを新規作成。
 
-3.datepicker.plugin.tpl.phpの内容を「プラグインコード」にコピー&ペースト。
+3.datetimepicker.plugin.tpl.phpの内容を「プラグインコード」にコピー&ペースト。
 
 4.次のコードを「プラグイン設定」にコピー&ペースト。
    &language=Language;string;auto &defaultTime=Default Time(hh:mm:ss);string;00:00:00
@@ -40,8 +40,8 @@ Datepicker プラグインはデフォルトのデートピッカーを置き換
 ----------
 
 language   : デートピッカーの言語。
-             /assets/plugins/datepicker/js/i18n/フォルダで言語コードを確認できます。
-             (「ui.datepicker-**.js」ファイルの「**」の部分が言語コードです。)
+             /assets/plugins/datetimepicker/js/i18n/フォルダで言語コードを確認できます。
+             (「ui.datetimepicker-**.js」ファイルの「**」の部分が言語コードです。)
 
              「auto」に設定すると、
              言語コードは「グローバル設定」の「管理画面の言語コード」と同じになります。
