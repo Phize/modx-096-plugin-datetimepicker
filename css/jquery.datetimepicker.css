@@ -52,11 +52,21 @@
 .ui-datetimepicker-next a:hover {
     background: #fff url(../images/next_h.png) no-repeat 50% 50%;
 }
+.ui-datetimepicker-footer {
+    margin-top: 0.5em;
+    text-align: center;
+}
 .ui-datetimepicker-header select {
     margin: 0 !important;
     border: 1px solid #777;
     position: absolute;
     top: .5em;
+    font-size: 1em;
+    line-height: 1.4em;
+}
+.ui-datetimepicker-footer select {
+    margin: 0 !important;
+    border: 1px solid #777;
     font-size: 1em;
     line-height: 1.4em;
 }

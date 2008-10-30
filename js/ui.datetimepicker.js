@@ -19,7 +19,8 @@
  */
 
 /* 
- * Merged into the latest UI Datepicker(1.5.2) by Fumito Arakawa as Phize (http://phize.net)
+ * DateTimepicker is merged into the latest UI Datepicker(1.5.2)
+ *   and second is added by Fumito Arakawa as Phize (http://phize.net)
  * Date: 2008-10-30
  */
 
@@ -1324,7 +1325,7 @@ $.extend(DateTimepicker.prototype, {
 			for (var col = 0; col < numMonths[1]; col++) {
 				var selectedDate = new Date(drawYear, drawMonth, inst.selectedDay, drawHour, drawMinute, drawSecond);
 				html += '<div class="ui-datetimepicker-one-month' + (col == 0 ? ' ui-datetimepicker-new-row' : '') + '">' +
-					this._generateMonthYearHeader(inst, drawSecond, drawMinute, drawHour, drawMonth, drawYear, minDate, maxDate,
+					this._generateMonthYearHeader(inst, drawMonth, drawYear, minDate, maxDate,
 					selectedDate, row > 0 || col > 0, showStatus, monthNames) + // draw month headers
 					'<table class="ui-datetimepicker" cellpadding="0" cellspacing="0"><thead>' + 
 					'<tr class="ui-datetimepicker-title-row">' +
@@ -1391,6 +1392,7 @@ $.extend(DateTimepicker.prototype, {
 				}
 				html += '</tbody></table></div>';
 			}
+		html += this._generateTimeFooter(inst,drawHour, drawMinute, drawSecond, showStatus);
 		html += (showStatus ? '<div style="clear: both;"></div><div id="ui-datetimepicker-status-' + inst.id + 
 			'" class="ui-datetimepicker-status">' + (this._get(inst, 'initStatus') || '&#xa0;') + '</div>' : '') +
 			(!closeAtTop && !inst.inline ? controls : '') +
@@ -1401,7 +1403,7 @@ $.extend(DateTimepicker.prototype, {
 	},
 	
 	/* Generate the month and year header. */
-	_generateMonthYearHeader: function(inst, drawSecond, drawMinute, drawHour, drawMonth, drawYear, minDate, maxDate,
+	_generateMonthYearHeader: function(inst, drawMonth, drawYear, minDate, maxDate,
 			selectedDate, secondary, showStatus, monthNames) {
 		minDate = (inst.rangeStart && minDate && selectedDate < minDate ? selectedDate : minDate);
 		var html = '<div class="ui-datetimepicker-header">';
@@ -1456,9 +1458,15 @@ $.extend(DateTimepicker.prototype, {
 			}
 			html += '</select>';
 		}
+		html += '</div>'; // Close datetimepicker_header
+		return html;
+	},
+
+	/* Generate the time footer. */
+	_generateTimeFooter: function(inst, drawHour, drawMinute, drawSecond, showStatus) {
+		var html = '<div class="ui-datetimepicker-footer">';
 		// if (this._get('changeTime'))
 		{
-			html += '<br />';
 			html += '<select class="ui-datetimepicker-new-hour" ' +
 				'onchange="modxPluginDateTimepicker.jQuery.datetimepicker._selectTime(\'#' + inst.id + ', this, \'H\');" ' +
 				'onclick="modxPluginDateTimepicker.jQuery.datetimepicker._clickMonthYear(\'#' + inst.id + ');"' +
@@ -1480,7 +1488,6 @@ $.extend(DateTimepicker.prototype, {
 					'>' + ((minute<10)?'0'+minute:minute) + '</option>';
 			}
 			html += '</select>';
-
 			html += '&nbsp;:&nbsp;';
 			html += '<select class="ui-datetimepicker-new-second" ' +
 				'onchange="modxPluginDateTimepicker.jQuery.datetimepicker._selectTime(\'#' + inst.id + ', this, \'S\');" ' +
@@ -1495,7 +1502,7 @@ $.extend(DateTimepicker.prototype, {
 		}
 		html += '</div>'; // Close datetimepicker_header
 		return html;
-	},
+    },
 
 	/* Provide code to set and clear the status panel. */
 	_addStatus: function(inst, text) {

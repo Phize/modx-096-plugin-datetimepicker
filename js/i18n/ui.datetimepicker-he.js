@@ -1,7 +1,7 @@
 ﻿/* Hebrew initialisation for the UI Datepicker extension. */
 /* Written by Amir Hardon (ahardon at gmail dot com). */
 jQuery(document).ready(function(){
-	jQuery.datepicker.regional['he'] = {clearText: 'נקה', clearStatus: '',
+	jQuery.datetimepicker.regional['he'] = {clearText: 'נקה', clearStatus: '',
 		closeText: 'סגור', closeStatus: '',
 		prevText: '&#x3c;הקודם', prevStatus: '',
 		nextText: 'הבא&#x3e;', nextStatus: '',
@@ -18,5 +18,5 @@ jQuery(document).ready(function(){
 		dayStatus: 'DD', dateStatus: 'DD, M d',
 		dateFormat: 'dd/mm/yy', firstDay: 0, 
 		initStatus: '', isRTL: true};
-	jQuery.datepicker.setDefaults($.datetimepicker.regional['he']);
+	jQuery.datetimepicker.setDefaults($.datetimepicker.regional['he']);
 });
