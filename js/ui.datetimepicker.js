@@ -70,7 +70,7 @@ function DateTimepicker() {
 		dayStatus: 'Set DD as first week day', // Status text for the day of the week selection
 		dateStatus: 'Select DD, M d', // Status text for the date selection
 		dateFormat: 'mm/dd/yy', // See format options on parseDate
-		timeFormat: 'hh:ii',
+		timeFormat: 'hh:ii:ss',
 		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
 		initStatus: 'Select a date', // Initial Status text on opening
 		isRTL: false // True if right-to-left language, false if left-to-right
@@ -563,7 +563,7 @@ $.extend(DateTimepicker.prototype, {
 		var rangeSelect = this._get(inst, 'rangeSelect');
 		if (rangeSelect && this._stayOpen)
 			this._selectDate('#' + inst.id, this._formatDateTime(inst,
-				inst.currentDay, inst.currentMonth, inst.currentYear, inst.currentHour, inst.currentMinute));
+				inst.currentDay, inst.currentMonth, inst.currentYear, inst.currentHour, inst.currentMinute, inst.currentSecond));
 		this._stayOpen = false;
 		if (this._datetimepickerShowing) {
 			duration = (duration != null ? duration : this._get(inst, 'duration'));
@@ -634,6 +634,7 @@ $.extend(DateTimepicker.prototype, {
 			inst.drawYear = inst.selectedYear = inst.currentYear;
 			inst.drawHour = inst.selectedHour = inst.currentHours;
 			inst.drawMinute = inst.selectedMinute = inst.currentMinute;
+			inst.drawSecond = inst.selectedSecond = inst.currentSecond;
 		}
 		else {
 		var date = new Date();
@@ -661,7 +662,8 @@ $.extend(DateTimepicker.prototype, {
 		var target = $(id);
 		var inst = $.data(target[0], PROP_NAME);
 		inst._selectingMonthYear = false;
-		inst[period == 'M' ? 'drawMonth' : 'drawYear'] =
+
+		inst[period == 'M' ? 'drawMinute' : (period == 'H' ? 'drawHour' : 'drawSecond')] =
 			select.options[select.selectedIndex].value - 0;
 		this._adjustDate(target);
 		this._notifyChange(inst);
@@ -717,6 +719,7 @@ $.extend(DateTimepicker.prototype, {
 		inst.selectedYear = inst.currentYear = year;
 		inst.selectedHour = inst.currentHour = $('select.ui-datetimepicker-new-hour option:selected').val();
 		inst.selectedMinute = inst.currentMinute = $('select.ui-datetimepicker-new-minute option:selected').val();
+		inst.selectedSecond = inst.currentSecond = $('select.ui-datetimepicker-new-second option:selected').val();
 		if (this._stayOpen) {
 			inst.endDay = inst.endMonth = inst.endYear = null;
 		}
@@ -726,7 +729,7 @@ $.extend(DateTimepicker.prototype, {
 			inst.endYear = inst.currentYear;
 		}
 		this._selectDate(id, this._formatDateTime(inst,
-			inst.currentDay, inst.currentMonth, inst.currentYear, inst.currentHour, inst.currentMinute));
+			inst.currentDay, inst.currentMonth, inst.currentYear, inst.currentHour, inst.currentMinute, inst.currentSecond));
 		if (this._stayOpen) {
 			inst.rangeStart = new Date(inst.currentYear, inst.currentMonth, inst.currentDay);
 			this._updateDateTimepicker(inst);
@@ -862,6 +865,7 @@ $.extend(DateTimepicker.prototype, {
 		var day = -1;
 		var hour = -1;
 		var minute = -1;
+		var second = -1;
 		var literal = false;
 		// Check whether a format character is doubled
 		var lookAhead = function(match) {
@@ -923,6 +927,9 @@ $.extend(DateTimepicker.prototype, {
 					case 'i':
 						minute = getNumber('i');
 						break;
+					case 's':
+						second = getNumber('s');
+						break;
 					case 'd':
 						day = getNumber('d');
 						break;
@@ -957,7 +964,7 @@ $.extend(DateTimepicker.prototype, {
 		if (year < 100)
 			year += new Date().getFullYear() - new Date().getFullYear() % 100 +
 				(year <= shortYearCutoff ? 0 : -100);
-		var date = new Date(year, month - 1, day, hour, minute);
+		var date = new Date(year, month - 1, day, hour, minute, second);
 		if (date.getFullYear() != year || date.getMonth() + 1 != month || date.getDate() != day)
 			throw 'Invalid date'; // E.g. 31/02/*
 		return date;
@@ -1038,6 +1045,9 @@ $.extend(DateTimepicker.prototype, {
 							break;
 						case 'i':
 							output += formatNumber('i', date.getMinutes());
+							break;
+						case 's':
+							output += formatNumber('s', date.getSeconds());
 							break;
 						case 'd':
 							output += formatNumber('d', date.getDate()); 
@@ -1132,6 +1142,7 @@ $.extend(DateTimepicker.prototype, {
 		inst.drawYear = inst.selectedYear = date.getFullYear();
 		inst.drawHour = inst.selectedHour = date.getHours();
 		inst.drawMinute = inst.selectedMinute = date.getMinutes();
+		inst.drawSecond = inst.selectedSecond = date.getSeconds();
 		inst.currentDay = (dates[0] ? date.getDate() : 0);
 		inst.currentMonth = (dates[0] ? date.getMonth() : 0);
 		inst.currentYear = (dates[0] ? date.getFullYear() : 0);
@@ -1195,6 +1206,7 @@ $.extend(DateTimepicker.prototype, {
 		inst.drawYear = inst.selectedYear = inst.currentYear = date.getFullYear();
 		inst.drawHour = inst.selectedHour = inst.currentHour = date.getHours();
 		inst.drawMinute = inst.selectedMinute = inst.currentMinute = date.getMinutes();
+		inst.drawSecond = inst.selectedSecond = inst.currentSecond = date.getSeconds();
 		if (this._get(inst, 'rangeSelect')) {
 			if (endDate) {
 				endDate = this._determineDate(endDate, null);
@@ -1255,6 +1267,7 @@ $.extend(DateTimepicker.prototype, {
 		var drawYear = inst.drawYear;
 		var drawHour = inst.drawHour;
 		var drawMinute = inst.drawMinute;
+		var drawSecond = inst.drawSecond;
 		if (maxDate) {
 			var maxDraw = new Date(maxDate.getFullYear(),
 				maxDate.getMonth() - numMonths[1] + 1, maxDate.getDate());
@@ -1309,9 +1322,9 @@ $.extend(DateTimepicker.prototype, {
 		var endDate = inst.endDay ? new Date(inst.endYear, inst.endMonth, inst.endDay) : currentDate;
 		for (var row = 0; row < numMonths[0]; row++)
 			for (var col = 0; col < numMonths[1]; col++) {
-				var selectedDate = new Date(drawYear, drawMonth, inst.selectedDay, drawHour, drawMinute);
+				var selectedDate = new Date(drawYear, drawMonth, inst.selectedDay, drawHour, drawMinute, drawSecond);
 				html += '<div class="ui-datetimepicker-one-month' + (col == 0 ? ' ui-datetimepicker-new-row' : '') + '">' +
-					this._generateMonthYearHeader(inst, drawMinute, drawHour, drawMonth, drawYear, minDate, maxDate,
+					this._generateMonthYearHeader(inst, drawSecond, drawMinute, drawHour, drawMonth, drawYear, minDate, maxDate,
 					selectedDate, row > 0 || col > 0, showStatus, monthNames) + // draw month headers
 					'<table class="ui-datetimepicker" cellpadding="0" cellspacing="0"><thead>' + 
 					'<tr class="ui-datetimepicker-title-row">' +
@@ -1388,7 +1401,7 @@ $.extend(DateTimepicker.prototype, {
 	},
 	
 	/* Generate the month and year header. */
-	_generateMonthYearHeader: function(inst, drawMinute, drawHour, drawMonth, drawYear, minDate, maxDate,
+	_generateMonthYearHeader: function(inst, drawSecond, drawMinute, drawHour, drawMonth, drawYear, minDate, maxDate,
 			selectedDate, secondary, showStatus, monthNames) {
 		minDate = (inst.rangeStart && minDate && selectedDate < minDate ? selectedDate : minDate);
 		var html = '<div class="ui-datetimepicker-header">';
@@ -1467,6 +1480,18 @@ $.extend(DateTimepicker.prototype, {
 					'>' + ((minute<10)?'0'+minute:minute) + '</option>';
 			}
 			html += '</select>';
+
+			html += '&nbsp;:&nbsp;';
+			html += '<select class="ui-datetimepicker-new-second" ' +
+				'onchange="modxPluginDateTimepicker.jQuery.datetimepicker._selectTime(\'#' + inst.id + ', this, \'S\');" ' +
+				'onclick="modxPluginDateTimepicker.jQuery.datetimepicker._clickMonthYear(\'#' + inst.id + ');"' +
+				(showStatus ? this._addStatus(this._get(inst, 'secondStatus') || '&#xa0;') : '') + '>';
+			for (second=0; second < 60; second++) {
+				html += '<option value="' + second + '"' +
+					(second == drawSecond ? ' selected="selected"' : '') +
+					'>' + ((second<10)?'0'+second:second) + '</option>';
+			}
+			html += '</select>';
 		}
 		html += '</div>'; // Close datetimepicker_header
 		return html;
@@ -1486,7 +1511,8 @@ $.extend(DateTimepicker.prototype, {
 			(period == 'D' ? offset : 0);
 		var hour = inst.drawHour + (period == 'H' ? offset : 0);
 		var minute = inst.drawMinute + (period == 'I' ? offset : 0);
-		var date = new Date(year, month, day, hour, minute);
+		var second = inst.drawSecond + (period == 'S' ? offset : 0);
+		var date = new Date(year, month, day, hour, minute, second);
 		// ensure it is within the bounds set
 		var minDate = this._getMinMaxDate(inst, 'min', true);
 		var maxDate = this._getMinMaxDate(inst, 'max');
@@ -1497,6 +1523,7 @@ $.extend(DateTimepicker.prototype, {
 		inst.drawYear = inst.selectedYear = date.getFullYear();
 		inst.drawHour = inst.selectedHour = date.getHours();
 		inst.drawMinute = inst.selectedMinute = date.getMinutes();
+		inst.drawSecond = inst.selectedSecond = date.getSeconds();
 		if (period == 'M' || period == 'Y')
 			this._notifyChange(inst);
 	},
@@ -1569,16 +1596,17 @@ $.extend(DateTimepicker.prototype, {
 	},
 
 	/* Format the given date for display. */
-	_formatDateTime: function(inst, day, month, year, hour, minute) {
+	_formatDateTime: function(inst, day, month, year, hour, minute, second) {
 		if (!day) {
 			inst.currentDay = inst.selectedDay;
 			inst.currentMonth = inst.selectedMonth;
 			inst.currentYear = inst.selectedYear;
 			inst.currentHour = inst.selectedHour;
 			inst.currentMinute = inst.selectedMinute;
+			inst.currentSecond = inst.selectedSecond;
 		}
-		var date = (day ? (typeof day == 'object' ? day : new Date(year, month, day, hour, minute)) :
-			new Date(inst.currentYear, inst.currentMonth, inst.currentDay, inst.currentHour, inst.currentMinute));
+		var date = (day ? (typeof day == 'object' ? day : new Date(year, month, day, hour, minute, second)) :
+			new Date(inst.currentYear, inst.currentMonth, inst.currentDay, inst.currentHour, inst.currentMinute, inst.currentSecond));
 		return this.formatDate(this._get(inst, 'dateFormat')+' '+this._get(inst, 'timeFormat'), date, this._getFormatConfig(inst));
 	}
 });
