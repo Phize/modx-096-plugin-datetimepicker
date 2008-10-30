@@ -3,8 +3,8 @@ Category   : Plugin
 Author     : Phize
 Author URI : http://phize.net
 License    : GNU General Public License(http://www.gnu.org/licenses/gpl.html)
-Version    : 1.0.0
-Last Update: 2008-10-27
+Version    : 1.1.0 beta
+Last Update: 2008-10-30
 
 
 
