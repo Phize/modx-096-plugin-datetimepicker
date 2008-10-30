@@ -30,7 +30,7 @@ DateTimepicker プラグインはデフォルトのデートピッカーを置�
 3.datetimepicker.plugin.tpl.phpの内容を「プラグインコード」にコピー&ペースト。
 
 4.次のコードを「プラグイン設定」にコピー&ペースト。
-   &language=Language;string;auto &defaultTime=Default Time(hh:mm:ss);string;00:00:00
+   &language=Language;string;auto
 
 5.「OnDocFormPrerender」イベントにチェックを入れて、プラグインを保存。
 
@@ -50,6 +50,3 @@ language   : デートピッカーの言語。
              ただし、この機能は0.9.6.2以上でのみ正しく動作します。
              (0.9.6.2未満のMODxにはバグがあるため、
               「auto」に設定しても、言語コードは常に「en」になります。)
-
-defaultTime: デフォルトの時刻。
-             時刻のフォーマットは「hh:mm:ss」です。

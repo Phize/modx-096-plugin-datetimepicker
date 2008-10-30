@@ -30,7 +30,7 @@ Install
 3.Copy&Paste the content of datetimepicker.plugin.tpl.php into 'Plugin code'.
 
 4.Copy&Paste the following code into 'Plugin configuration'.
-   &language=Language;string;auto &defaultTime=Default Time(hh:mm:ss);string;00:00:00
+   &language=Language;string;auto
 
 5.Check 'OnDocFormPrerender' event, and save the plugin.
 
@@ -49,6 +49,3 @@ language   : The language of datetimepicker.
              However, auto mode works well on 0.9.6.2 or more.
              (The MODx of less than 0.9.6.2 has a bug.
               Therefore, the language code will be always 'en' even if you set 'auto'.)
-
-defaultTime: The default time.
-             The time format is 'hh:mm:ss'.
