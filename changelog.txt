@@ -1,0 +1,11 @@
+1.1.0(2008-12-31)
+  * renamed the plugin name to DateTimePicker plugin.
+  * added the time picker.
+  * added the feature to support date type TVs.
+  * added the highlighting of the chosen date.
+  * adjusted the position of pop-up window.
+  * removed the defaultTime parameter.
+  * refactored the code.
+
+1.0.0(2008-10-27)
+  * released.

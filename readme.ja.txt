@@ -1,22 +1,25 @@
-Title      : DateTimepicker plugin
+Title      : DateTimePicker plugin
 Category   : Plugin
 Author     : Phize
 Author URI : http://phize.net
 License    : GNU General Public License(http://www.gnu.org/licenses/gpl.html)
-Version    : 1.1.0 beta
-Last Update: 2008-10-30
+Version    : 1.1.0
+Last Update: 2008-12-31
 
 
 
 概要
 ----
 
-DateTimepicker プラグインはデフォルトのデートピッカーを置き換えるプラグインです。
+DateTimePicker プラグインはデフォルトのデートタイムピッカーを置き換えるプラグインです。
 
 ドキュメントの編集画面で、
-いつものようにカレンダーアイコンをクリックすると、新しいデートピッカーが表示されます。
+いつものようにカレンダーアイコンをクリックすると、新しいデートタイムピッカーが表示されます。
 
-新しいウィンドウやタブを開くことなく、日付を入力することができるようになります。
+新しいウィンドウやタブを開くことなく、日時を入力することができるようになります。
+
+テンプレート変数名に「-」、「.」、「_」を含む入力タイプが「Date」のテンプレート変数がある場合、
+DateTimePicker プラグインは正常に動作しません。
 
 
 
@@ -25,7 +28,7 @@ DateTimepicker プラグインはデフォルトのデートピッカーを置�
 
 1.datetimepicker/フォルダを /assets/plugins/ にコピー。
 
-2.「DateTimepicker」という名前のプラグインを新規作成。
+2.「DateTimePicker」という名前のプラグインを新規作成。
 
 3.datetimepicker.plugin.tpl.phpの内容を「プラグインコード」にコピー&ペースト。
 

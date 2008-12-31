@@ -22,6 +22,7 @@
  * DateTimepicker is merged into the latest UI Datepicker(1.5.2)
  *   and second is added by Fumito Arakawa as Phize (http://phize.net)
  * Date: 2008-10-30
+ * Date: 2008-12-31 Modified to hide temporary input fields.
  */
 
 (function($) { // hide the namespace
@@ -265,7 +266,7 @@ $.extend(DateTimepicker.prototype, {
 		if (!inst) {
 			var id = 'dp' + new Date().getTime();
 			this._dialogInput = $('<input type="text" id="' + id +
-				'" size="1" style="position: absolute; top: -100px;"/>');
+				'" size="1" style="position: absolute; top: -100px; display: none;"/>');
 			this._dialogInput.keydown(this._doKeyDown);
 			$('body').append(this._dialogInput);
 			inst = this._dialogInst = this._newInst(this._dialogInput, false);
@@ -588,7 +589,7 @@ $.extend(DateTimepicker.prototype, {
 			this._lastInput = null;
 			inst.settings.prompt = null;
 			if (this._inDialog) {
-				this._dialogInput.css({ position: 'absolute', left: '0', top: '-100px' });
+				this._dialogInput.css({ position: 'absolute', left: '0', top: '-100px', display: 'none' });
 				if ($.blockUI) {
 					$.unblockUI();
 					$('body').append(this.dpDiv);

@@ -1,10 +1,10 @@
-/* Title      : DateTimepicker plugin
+/* Title      : DateTimePicker plugin
  * Category   : Plugin
  * Author     : Phize
  * Author URI : http://phize.net
  * License    : GNU General Public License(http://www.gnu.org/licenses/gpl.html)
- * Version    : 1.1.0 beta
- * Last Update: 2008-10-30
+ * Version    : 1.1.0
+ * Last Update: 2008-12-31
  */
 
 $base_path = 'assets/plugins/datetimepicker/';

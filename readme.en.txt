@@ -1,22 +1,25 @@
-Title      : DateTimepicker plugin
+Title      : DateTimePicker plugin
 Category   : Plugin
 Author     : Phize
 Author URI : http://phize.net
 License    : GNU General Public License(http://www.gnu.org/licenses/gpl.html)
-Version    : 1.1.0 beta
-Last Update: 2008-10-30
+Version    : 1.1.0
+Last Update: 2008-12-31
 
 
 
 Introduction
 ------------
 
-DateTimepicker plugin is the plugin replaces default datetimepicker.
+DateTimePicker plugin is the plugin replaces default datetimepicker.
 
 In 'Edit document' page,
 when you click calendar icon as usual, new datetimepicker is shown.
 
-Now, you can pick up a date without opening new window/tab.
+Now, you can pick up a date and a time without opening new window/tab.
+
+If there are date type TVs have TV name which are included '-' or '.', '_', 
+DateTimePicker plugin would not run correctly.
 
 
 
@@ -25,7 +28,7 @@ Install
 
 1.Copy datetimepicker/ folder to /assets/plugins/
 
-2.Create new plugin named 'DateTimepicker'.
+2.Create new plugin named 'DateTimePicker'.
 
 3.Copy&Paste the content of datetimepicker.plugin.tpl.php into 'Plugin code'.
 
